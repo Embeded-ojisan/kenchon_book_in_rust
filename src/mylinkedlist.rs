@@ -37,18 +37,32 @@ impl<T> MyLinkedList<T> {
         self.head = Some(new_node);
     }
 
-/*
-    pub fn pop(&mut self) -> Link<T> {
-        let node = self.head;
-        self.head = self.head.take().next;
-        node
+    pub fn pop(&mut self) -> T {
+        self
+            .head
+            .take()
+            .map(|xs|
+                {
+                    let xs = *xs;
+                    self.head = xs.next;
+                    xs.elem
+                }
+            )
+            .unwrap()
     }
-*/
 
 /*
-    fn len(&self) -> usize {
-
+    pub fn len(&self) -> usize {
+        self
+            .head
+            .take()
+            .map(|xs|
+                {
+                    let xs =  
+                }
+            )
     }
+
 */
     
 /*

@@ -1,4 +1,5 @@
 pub mod mylinkedlist;
+pub mod samplelinkedlist;
 
 #[cfg(test)]
 mod tests {
