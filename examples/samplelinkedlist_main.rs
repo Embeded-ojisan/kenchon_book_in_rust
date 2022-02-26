@@ -1,27 +1,28 @@
-use kenchon_book_in_rust::samplelinkedlist::List;
+use kenchon_book_in_rust::samplelinkedlist::Deque;
 
 fn main() {
-    let mut a: List<i32> = List::new();
-    for i in 0 .. 8 {
-        a.push(i);
+    let mut deq = Deque::new();
+    println!("{}", deq.len());
+    println!("{}", deq.is_empty());
+    println!("{}", deq.is_full());
+    for i in 0 .. 4 {
+        deq.push_back(i);
+        deq.push_front(i + 10);
     }
-    println!("{}", a.peek().unwrap());
-    for x in a.iter() {
-        print!("{} ", x)
+    println!("{}", deq.len());
+    println!("{}", deq.is_empty());
+    println!("{}", deq.is_full());
+    println!("{:?}", deq.back());
+    println!("{:?}", deq.front());
+    for _ in 0 .. 3 {
+        println!("{:?}", deq.pop_back());
+        println!("{:?}", deq.pop_front());
     }
-    println!("");
-    for x in a.iter_mut() {
-        *x += 10;
-    }
-    println!("{}", a.iter().nth(7).unwrap());
-    *a.iter_mut().nth(7).unwrap() += 100;
-    println!("{}", a.iter().nth(7).unwrap());
-    while !a.is_empty() {
-        println!("{}", a.pop().unwrap());
-    }
-    for i in 0 .. 8 {
-        a.push(i)
-    }
-    let b: Vec<i32> = a.into_iter().collect();
-    println!("{:?}", b);
+    println!("{}", deq.len());
+    println!("{}", deq.is_empty());
+    println!("{}", deq.is_full());
+    deq.clear();
+    println!("{}", deq.len());
+    println!("{}", deq.is_empty());
+    println!("{}", deq.is_full());
 }

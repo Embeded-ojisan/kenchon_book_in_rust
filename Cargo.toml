@@ -8,5 +8,9 @@ edition = "2021"
 [dependencies]
 
 [[bin]]
+name = "customizedlinkedlist_main"
+path = "examples/customizedlinkedlist_main.rs"
+
+[[bin]]
 name = "samplelinkedlist_main"
 path = "examples/samplelinkedlist_main.rs"
