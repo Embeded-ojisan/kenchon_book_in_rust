@@ -86,7 +86,7 @@ impl<T> List<T> {
                 };
                 
                 // pushする値をリストの根元へ
-                self.head = Some(Rc::new(RefCell::new(new_node)));
+                self.head = Some(Rc::new(RefCell::new(new_node))); 
 //                let reserve = std::mem::replace(&mut self.head, self.head);
 //                self.head.as_mut().unwrap().next.as_mut().unwrap().prev = self.head.take();
                 if self.head.as_ref().expect("Error1").next.as_ref().is_some()
