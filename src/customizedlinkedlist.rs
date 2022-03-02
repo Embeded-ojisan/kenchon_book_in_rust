@@ -4,6 +4,7 @@
 http://www.nct9.ne.jp/m_hiroi/linux/rust04.html
 */
 
+/*
 use std::rc::Rc;
 use std::cell::RefCell;
 
@@ -21,11 +22,11 @@ pub struct List<T> {
 
 // イテレータの定義
 pub struct IterList<'a, T: 'a> {
-    next: Option<&'a Node<T>>
+    next: Option<&'a Rc<RefCell<Node<T>>>>
 }
 
 pub struct IterMutList<'a, T: 'a> {
-    next: Option<&'a mut Node<T>>
+    next: Option<&'a mut Rc<RefCell<Node<T>>>>
 }
 
 pub struct IterIntoList<T> {
@@ -86,7 +87,7 @@ impl<T> List<T> {
                 };
                 
                 // pushする値をリストの根元へ
-                self.head = Some(Rc::new(RefCell::new(new_node)));   
+                self.head = Some(Rc::new(RefCell::new(new_node)));
 //                let reserve = std::mem::replace(&mut self.head, self.head);
 //                self.head.as_mut().unwrap().next.as_mut().unwrap().prev = self.head.take();
                 if self.head.as_ref().expect("Error1").next.as_ref().is_some()
@@ -170,3 +171,4 @@ impl<T: std::cmp::PartialEq> List<T> {
         }    
     }
 }
+*/

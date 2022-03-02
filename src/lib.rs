@@ -1,6 +1,7 @@
 pub mod mylinkedlist;
-pub mod customizedlinkedlist;
+//pub mod customizedlinkedlist;
 pub mod samplelinkedlist;
+pub mod samplelinkedlist2;
 
 #[cfg(test)]
 mod tests {

@@ -1,14 +1,15 @@
+/*
 use kenchon_book_in_rust::customizedlinkedlist::List;
-
+*/
 fn main() {
-    let mut a: List<i32> = List::new();
+//    let mut a: List<i32> = List::new();
 
 /*
     a.push(1);
     a.push(2);
     println!("{:?}", a.pop());
 */
-
+/*
     for i in 0 .. 8 {
         println!("{}", i);
         a.push(i);
@@ -33,4 +34,5 @@ fn main() {
     }
     let b: Vec<i32> = a.into_iter().collect();
     println!("{:?}", b);
+*/
 }

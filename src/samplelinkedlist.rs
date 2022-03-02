@@ -2,6 +2,8 @@
 以下を丸々コピー
 
 http://www.nct9.ne.jp/m_hiroi/linux/rust09.html
+
+※注釈付き
 */
 
 use std::rc::Rc;
@@ -14,7 +16,7 @@ struct Node<T> {
     next: Link<T>
 }
 
-type Link<T> = Option<Rc<UnsafeCell<Node<T>>>>;
+pub type Link<T> = Option<Rc<UnsafeCell<Node<T>>>>;
 
 // 両端キュー
 pub struct Deque<T: Default> {
@@ -35,10 +37,13 @@ impl<T: Default> Deque<T> {
                 }
             )
         );
+
+        // 
         unsafe {
             (*header.get()).prev = Some(header.clone());
             (*header.get()).next = Some(header.clone());
         };
+
         Deque { 
             head: Some(header),
             size: 0
@@ -47,14 +52,22 @@ impl<T: Default> Deque<T> {
 
     // 末尾にデータを追加する
     pub fn push_back(&mut self, x: T) {
-        let new_node = Rc::new(UnsafeCell::new(Node {
-            data: x, prev: None, next: None
-        }));
+        let new_node = Rc::new(
+            UnsafeCell::new(
+                Node {
+                    data: x,
+                    prev: None,
+                    next: None
+                }
+            )
+        );
         let p = new_node.get();
         self.head.as_mut().map(|header| unsafe {
             let q = header.get();
             (*q).prev.take().map(|tail| {
+                // 末尾のNodeのnextを挿入対象のNodeに合わせる
                 (*tail.get()).next = Some(new_node.clone());
+                // 先頭のNodeのprevを挿入対象のNodeに合わせる
                 (*q).prev = Some(new_node);
                 (*p).prev = Some(tail);
                 (*p).next = Some(header.clone());
