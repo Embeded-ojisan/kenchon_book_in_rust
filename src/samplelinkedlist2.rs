@@ -1,5 +1,5 @@
 /*
-    「高効率言語Rust」のp.490のソースの写経
+    「高効率言語Rust」のp.490のソースの写経とそれをベースにした自作メソッド
 */
 use std::rc::{Rc, Weak};
 use std::cell::RefCell;
