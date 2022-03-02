@@ -76,7 +76,7 @@ impl List {
                     if head.borrow_mut().data == v {
                         let erase_point = head.borrow_mut();
                         match &erase_point.next {
-                            None => {
+                            None => { 
                                 ;
                             },
                             Some(ep) => {
