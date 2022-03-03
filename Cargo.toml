@@ -14,3 +14,7 @@ path = "examples/customizedlinkedlist_main.rs"
 [[bin]]
 name = "samplelinkedlist_main"
 path = "examples/samplelinkedlist_main.rs"
+
+[[bin]]
+name = "samplelinkedlist2_main"
+path = "examples/samplelinkedlist2_main.rs"

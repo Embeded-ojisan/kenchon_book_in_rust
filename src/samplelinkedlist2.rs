@@ -3,6 +3,7 @@
 */
 use std::rc::{Rc, Weak};
 use std::cell::RefCell;
+//use std::borrow::BorrowMut;
 
 pub struct Node {
     data: isize,
@@ -66,21 +67,47 @@ impl List {
         }
     }
 
+    // 指定した値のNodeを削除
     pub fn erase(&mut self, v: isize) {
         match &self.head {
             None => {
                 ;
             },
             Some(head) => {
+
+                // 同じ値を
                 loop {
+
+                    // 同じ値が見つかったらループを抜ける
                     if head.borrow_mut().data == v {
                         let erase_point = head.borrow_mut();
                         match &erase_point.next {
+
+                            // 一番、末尾のNodeなのでそのまま削除
                             None => { 
-                                ;
+                                head
+                                    .borrow_mut()
+                                    .prev
+                                    .as_ref()
+                                    .unwrap()
+                                    .upgrade()
+                                    .unwrap()
+                                    .borrow_mut()
+                                    .next = None;
                             },
+
+                            // 
                             Some(ep) => {
-                                ep.borrow_mut().prev.unwrap() = erase_point.prev;
+                                ep.borrow_mut().prev = 
+                                    Some(
+                                        Rc::downgrade(
+                                            &erase_point
+                                                .prev.as_ref()
+                                                .unwrap()
+                                                .upgrade()
+                                                .unwrap()
+                                        )
+                                    );
                             }
                         } 
                         break;
