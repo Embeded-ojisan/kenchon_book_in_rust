@@ -67,6 +67,67 @@ impl List {
         }
     }
 
+    pub fn erase(&mut self, v: isize) {
+        let mut iterator = self.iter();
+        while let Some(element) = iterator.next_iter() {
+            if element.borrow().data == v {
+                // Nodeを削除
+                // 削除対象のNodeのnextをその前の要素のnextに代入
+                match &element.borrow_mut().next {
+                    None => {
+                        ;
+                    }
+                    Some(next_elm) => {
+                        next_elm.borrow_mut().prev = 
+                            Some(
+                                Rc::downgrade(
+                                    &element
+                                        .borrow_mut()
+                                        .prev
+                                        .as_ref()
+                                        .unwrap()
+                                        .upgrade()
+                                        .unwrap()
+                            )
+                        );
+                    }
+                }
+                // 削除対象のNodeのprevをその前の要素のprevに代入
+                match &element.borrow_mut().prev {
+                    None => {
+                        ;
+                    }
+                    Some(prev_elm) => {
+/*
+                        std::mem::replace(
+                            
+                        );
+*/
+                        unsafe{
+                        (*prev_elm.as_ptr()).borrow_mut().next = 
+                            Some(
+                                Rc::clone(
+                                    &element
+                                        .borrow_mut()
+                                        .next
+                                        .as_ref()
+                                        .unwrap()
+                            )
+                        );
+                        }
+                    }
+                }
+                // 削除対象のNodeにstd::mem::replace
+/*
+                std::mem::replace(
+                    &element.borrow_mut(),
+                    None
+                );
+*/
+            }
+        }
+    }
+/*
     // 指定した値のNodeを削除
     pub fn erase(&mut self, v: isize) {
         match &self.head {
@@ -118,13 +179,23 @@ impl List {
                             ;
                         },
                         Some(next) => {
-                            let head = &head.borrow().next;
+                            self.head = 
+                                Some(
+                                        Rc::new(
+                                            *next
+                                                .as_ref()
+//                                                .unwrap()
+//                                                .upgrade()
+//                                                .unwrap()
+                                        )
+                                );
                         }
                     }
                 }
             }
         }
     }
+*/
 
     pub fn iter(&mut self) -> ListIter {
         match &self.head {
@@ -156,6 +227,25 @@ impl Iterator for ListIter {
                     }
                 }
                 Some(data)
+            }
+        }
+    }
+}
+
+impl ListIter {
+    pub fn next_iter(&mut self) -> Option<Rc<RefCell<Node>>> {
+        match self.cur.take() {
+            None => None,
+            Some(cur) => {
+                let cb = cur.borrow();
+                let data = cb.data;
+                match &cb.next {
+                    None => self.cur = None,
+                    Some(next) => {
+                        self.cur = Some(Rc::clone(&next));
+                    }
+                }
+                Some(Rc::clone(&cb.next.as_ref().unwrap()))
             }
         }
     }
