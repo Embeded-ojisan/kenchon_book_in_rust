@@ -69,8 +69,13 @@ impl List {
 
     pub fn erase(&mut self, v: isize) {
         let mut iterator = self.iter();
+        if iterator.borrow().unwrap().data == v {
+            println!("next_iter");
+        }
+
         while let Some(element) = iterator.next_iter() {
             if element.borrow().data == v {
+                println!("detect");
                 // Nodeを削除
                 // 削除対象のNodeのnextをその前の要素のnextに代入
                 match &element.borrow_mut().next {
@@ -240,12 +245,17 @@ impl ListIter {
                 let cb = cur.borrow();
                 let data = cb.data;
                 match &cb.next {
-                    None => self.cur = None,
+                    None => {
+                        self.cur = None;
+                        None
+                    },
                     Some(next) => {
                         self.cur = Some(Rc::clone(&next));
+                        println!("OK");
+                        Some(Rc::clone(&cb.next.as_ref().unwrap()))
                     }
                 }
-                Some(Rc::clone(&cb.next.as_ref().unwrap()))
+//                Some(Rc::clone(&cb.next.as_ref().unwrap()))
             }
         }
     }
