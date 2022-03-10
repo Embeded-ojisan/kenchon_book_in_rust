@@ -1,6 +1,7 @@
 /*
     「高効率言語Rust」のp.490のソースの写経とそれをベースにした自作メソッド
 */
+
 use std::rc::{Rc, Weak};
 use std::cell::RefCell;
 //use std::borrow::BorrowMut;
@@ -16,6 +17,7 @@ pub struct List {
     foot: Option<Rc<RefCell<Node>>>,
 }
 
+/*
 impl List {
     pub fn new() -> Self {
         Self {head: None, foot: None}
@@ -69,8 +71,51 @@ impl List {
 
     pub fn erase(&mut self, v: isize) {
         let mut iterator = self.iter();
-        if iterator.borrow().unwrap().data == v {
+        let mut element = iterator.get().unwrap();
+        if element.borrow().data == v {
             println!("next_iter");
+                // Nodeを削除
+                // 削除対象のNodeのnextをその前の要素のnextに代入
+                match &element.borrow_mut().next {
+                    None => {
+                        ;
+                    }
+                    Some(next_elm) => {
+                        next_elm.borrow_mut().prev = 
+                            Some(
+                                Rc::downgrade(
+                                    &element
+                                        .borrow_mut()
+                                        .prev
+                                        .as_ref()
+                                        .unwrap()
+                                        .upgrade()
+                                        .unwrap()
+                            )
+                        );
+                    }
+                }
+                // 削除対象のNodeのprevをその前の要素のprevに代入
+                match &element.borrow_mut().prev {
+                    None => {
+                        ;
+                    }
+                    Some(prev_elm) => {
+                        unsafe{
+                        (*prev_elm.as_ptr()).borrow_mut().next = 
+                            Some(
+                                Rc::clone(
+                                    &element
+                                        .borrow_mut()
+                                        .next
+                                        .as_ref()
+                                        .unwrap()
+                            )
+                        );
+                        }
+                    }
+                }
+
         }
 
         while let Some(element) = iterator.next_iter() {
@@ -103,11 +148,6 @@ impl List {
                         ;
                     }
                     Some(prev_elm) => {
-/*
-                        std::mem::replace(
-                            
-                        );
-*/
                         unsafe{
                         (*prev_elm.as_ptr()).borrow_mut().next = 
                             Some(
@@ -238,6 +278,15 @@ impl Iterator for ListIter {
 }
 
 impl ListIter {
+    pub fn get(&mut self) -> Option<Rc<RefCell<Node>>> {
+        match self.cur.take() {
+            None => None,
+            Some(cur) => {
+                Some(Rc::clone(&cur))
+            }
+        }
+    }
+
     pub fn next_iter(&mut self) -> Option<Rc<RefCell<Node>>> {
         match self.cur.take() {
             None => None,
@@ -260,3 +309,4 @@ impl ListIter {
         }
     }
 }
+*/

@@ -18,3 +18,7 @@ path = "examples/samplelinkedlist_main.rs"
 [[bin]]
 name = "samplelinkedlist2_main"
 path = "examples/samplelinkedlist2_main.rs"
+
+[[bin]]
+name = "8-6"
+path = "examples/8-6.rs"

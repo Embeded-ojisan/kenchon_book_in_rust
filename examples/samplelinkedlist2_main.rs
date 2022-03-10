@@ -1,7 +1,8 @@
 use kenchon_book_in_rust::samplelinkedlist2::List;
 
 fn main() {
-    
+
+/*
     let mut list = List::new();
 
     list.push(100);
@@ -15,6 +16,7 @@ fn main() {
     for v in list.iter() {
         println!("{}", v)
     }
+*/
 
 /*
     for v in list.iter() {
