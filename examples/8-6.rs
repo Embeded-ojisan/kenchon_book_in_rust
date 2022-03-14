@@ -24,4 +24,25 @@ fn main() {
         println!("{}", v);
     }
 
+    let erase_string = "watanabe".to_string();
+    let mut count = 0;
+
+    for v in list.iter() {
+        match &*v.to_string() {
+            "watanabe" => {
+                break;
+            }
+            _ => {
+                count += 1;
+            }
+        }
+    }
+
+/*
+    list.remove(count);
+
+    for v in list.iter() {
+        println!("{}", v);
+    }    
+*/
 }

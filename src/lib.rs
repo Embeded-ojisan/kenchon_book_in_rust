@@ -2,6 +2,7 @@ pub mod mylinkedlist;
 //pub mod customizedlinkedlist;
 pub mod samplelinkedlist;
 pub mod samplelinkedlist2;
+pub mod SimpleGraph;
 
 #[cfg(test)]
 mod tests {
