@@ -1,4 +1,4 @@
-
+use kenchon_book_in_rust::stdio_wrapper;
 
 fn main() {
 

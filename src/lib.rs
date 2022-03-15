@@ -3,6 +3,7 @@ pub mod mylinkedlist;
 pub mod samplelinkedlist;
 pub mod samplelinkedlist2;
 pub mod SimpleGraph;
+pub mod stdio_wrapper;
 
 #[cfg(test)]
 mod tests {
