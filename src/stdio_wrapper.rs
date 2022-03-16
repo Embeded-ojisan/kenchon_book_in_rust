@@ -2,18 +2,44 @@
 参考
 
 https://qiita.com/penguinshunya/items/cd96803b74635aebefd6
-*/
-use std::io;
 
-pub fn read_line_single() -> String {
+https://what-alnk.hatenablog.com/entry/2017/07/31/214844
+*/
+use std::io::stdin;
+use std::str::FromStr;
+
+
+pub fn read_single_String() -> String {
     read::<String>()
 }
 
-pub fn read_usize_single() -> usize {
+pub fn read_and_return_Iter() -> impl Iterator<Item = usize> {
+    let mut buf = String::new();
+    std::io::stdin().read_line(&mut buf).ok();
+    let mut it = 
+        buf
+            .split_whitespace()
+            .map(|n| usize::from_str(n).unwrap());
+    it
+}
+
+pub fn read_double_turple_usize() -> (usize, usize) {
+    let mut buf = String::new();
+    std::io::stdin().read_line(&mut buf).ok();
+    let mut it = 
+        buf
+            .split_whitespace()
+            .map(|n| usize::from_str(n).unwrap());
+
+    (it.next().unwrap(), it.next().unwrap())
+}
+
+
+pub fn read_single_usize() -> usize {
     read::<usize>()
 }
 
-fn read<T: std::str::FromStr>() -> T {
+pub fn read<T: std::str::FromStr>() -> T {
     let mut s = String::new();
     std::io::stdin().read_line(&mut s).ok();
     s.trim()
