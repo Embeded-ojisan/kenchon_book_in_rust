@@ -13,15 +13,17 @@ pub fn read_single_String() -> String {
     read::<String>()
 }
 
+/*
 pub fn read_and_return_Iter() -> impl Iterator<Item = usize> {
     let mut buf = String::new();
     std::io::stdin().read_line(&mut buf).ok();
-    let mut it = 
+    let iter = 
         buf
-            .split_whitespace()
-            .map(|n| usize::from_str(n).unwrap());
-    it
+        .split_whitespace()
+        .map(|n| usize::from_str(n).unwrap());
+    iter.clone()
 }
+*/
 
 pub fn read_double_turple_usize() -> (usize, usize) {
     let mut buf = String::new();

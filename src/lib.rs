@@ -2,7 +2,10 @@ pub mod mylinkedlist;
 //pub mod customizedlinkedlist;
 pub mod samplelinkedlist;
 pub mod samplelinkedlist2;
+
 pub mod SimpleGraph;
+pub mod WeightedGraph;
+
 pub mod stdio_wrapper;
 
 #[cfg(test)]

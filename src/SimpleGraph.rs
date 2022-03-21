@@ -1,12 +1,16 @@
+/*
+参考
 
+https://blog-dry.com/entry/2020/01/30/004406
+*/
 
-pub struct Graph {
+pub struct SimpleGraph {
     list: Vec<Vec<usize>>,
 }
 
-impl Graph {
+impl SimpleGraph {
     pub fn new() -> Self {
-        Graph {
+        SimpleGraph {
             list: vec![vec![]],
         }
     }
@@ -20,5 +24,16 @@ impl Graph {
                 self.list.insert(a, vec![b]);
             }
         };
+    }
+
+    pub fn get(&mut self, a: usize) -> Vec<usize> {
+        match self.list.get(a){
+            Some(vb) => {
+                vb.to_vec()
+            },
+            None => {
+                vec![]
+            },
+        }
     }
 }

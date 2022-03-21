@@ -26,3 +26,8 @@ path = "examples/8-6.rs"
 [[bin]]
 name = "10-3"
 path = "examples/10-3.rs"
+
+[[bin]]
+name = "10-4"
+path = "examples/10-4.rs"
+
