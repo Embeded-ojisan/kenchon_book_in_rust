@@ -1,6 +1,8 @@
+use std::fmt;
 
-#[derive(Copy)]
-struct Edge {
+
+#[derive(Copy, Clone, Debug)]
+pub struct Edge {
     to: usize,
     w: usize,
 }
@@ -15,6 +17,12 @@ impl Edge {
             to: inpTo,
             w: inpW
         }
+    }
+}
+
+impl fmt::Display for Edge {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{} {}", self.to, self.w)
     }
 }
 
