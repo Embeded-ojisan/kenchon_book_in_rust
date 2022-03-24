@@ -6,6 +6,8 @@ pub mod samplelinkedlist2;
 pub mod SimpleGraph;
 pub mod WeightedGraph;
 
+pub mod Heap;
+
 pub mod stdio_wrapper;
 
 #[cfg(test)]
