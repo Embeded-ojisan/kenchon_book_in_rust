@@ -11,6 +11,12 @@ impl Heap {
         }
     }
 
+    pub fn print(&mut self) {
+        for i in &self.heap {
+            println!("{}", i);
+        }
+    }
+
     pub fn push(&mut self, inValue: usize) {
         self.heap.push(inValue);
         let mut i = self.heap.len() - 1;
@@ -38,28 +44,17 @@ impl Heap {
 
     }
 
-
-    pub fn get_max_value(&mut self) -> Option<usize> {
-        if !(self.heap.is_empty()) {
-            Some(self.heap[0])
-        }
-        else
-        {
-            None
-        }
-    }
-
-    pub fn pop(&mut self) {
+    pub fn pop(&mut self) -> Option<usize> {
         if self.heap.is_empty()
         {
-            return;
+            return None;
         }
         let x = self.heap.pop().unwrap();
         self.heap.remove(0);
         let mut i = 0;
         loop
         {
-            if (i * 2 + 1) < self.heap.len()
+            if (i * 2 + 1) > self.heap.len()
             {
                 break;
             }
@@ -82,6 +77,7 @@ impl Heap {
             i = child1;
         }
         self.heap[i] = x;
+        Some(x)
     }
     
 

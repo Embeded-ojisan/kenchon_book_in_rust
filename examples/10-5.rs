@@ -8,8 +8,10 @@ fn main() {
     heap.push(7);
     heap.push(1);
 
+//    heap.print();
+
     println!("{}", heap.top().unwrap());
-    heap.top();
+    println!("{}", heap.pop().unwrap());
     println!("{}", heap.top().unwrap());
 
     heap.push(11);
