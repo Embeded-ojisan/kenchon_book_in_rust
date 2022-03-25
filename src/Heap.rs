@@ -1,6 +1,6 @@
 
 
-struct Heap {
+pub struct Heap {
     heap: Vec<usize>,
 }
 
@@ -28,6 +28,16 @@ impl Heap {
         self.heap[i] = inValue;
     }
 
+    pub fn top(&mut self) -> Option<usize> {
+        if !self.heap.is_empty()
+        {
+            return Some(self.heap[0]);
+        }
+
+        return None;
+
+    }
+
 
     pub fn get_max_value(&mut self) -> Option<usize> {
         if !(self.heap.is_empty()) {
@@ -40,10 +50,38 @@ impl Heap {
     }
 
     pub fn pop(&mut self) {
-        if self.heap.is_empty() {
+        if self.heap.is_empty()
+        {
             return;
         }
         let x = self.heap.pop().unwrap();
+        self.heap.remove(0);
+        let mut i = 0;
+        loop
+        {
+            if (i * 2 + 1) < self.heap.len()
+            {
+                break;
+            }
+
+            let mut child1 = i * 2 + 1;
+            let mut child2 = i * 2 + 2;
+
+            if child2 < self.heap.len()
+                && self.heap[child2] > self.heap[child1]
+            {
+                child1 = child2;
+            }
+
+            if self.heap[child1] <= x
+            {
+                break;
+            }
+
+            self.heap[i] = self.heap[child1];
+            i = child1;
+        }
+        self.heap[i] = x;
     }
     
 
