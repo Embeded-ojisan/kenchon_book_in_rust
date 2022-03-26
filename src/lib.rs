@@ -8,6 +8,8 @@ pub mod WeightedGraph;
 
 pub mod Heap;
 
+pub mod UnionFind;
+
 pub mod stdio_wrapper;
 
 #[cfg(test)]
