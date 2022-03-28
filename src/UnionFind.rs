@@ -44,8 +44,8 @@ impl UnionFind
 
     pub fn unite(&mut self, x: usize, y: usize) -> Result<bool,UniteError>
     {
-        let x = self.root(x);
-        let y = self.root(y);
+        let x = self.root(x).unwrap_or(None);
+        let y = self.root(y).unwrap_or(None);
 
         if x == y
         {
