@@ -1,6 +1,7 @@
+use crate::UnionFind::UniteError::AlreadySameGroup;
 
 
-struct UnionFind
+pub struct UnionFind
 {
     par: Vec<Option<usize>>,
     siz: Vec<usize>,
@@ -41,16 +42,37 @@ impl UnionFind
         return self.root(x) == self.root(y);     
     }
 
-    pub fn unite(&mut self, x: usize, y: usize) -> Result<,UniteError>
+    pub fn unite(&mut self, x: usize, y: usize) -> Result<bool,UniteError>
     {
         let x = self.root(x);
         let y = self.root(y);
 
         if x == y
         {
-            return Error(UnionError);
+            return Err(AlreadySameGroup);
         }
 
-        return Ok();
+        if self.siz[x] < self.siz[y]
+        {
+            std::mem::replace(x, y);
+        }
+
+        self.par[y] = Some(x);
+        self.siz[x] += self.siz[y];
+
+        return Ok(true);
+    }
+
+    pub fn size(&mut self, x: usize) -> Option<usize>
+    {
+        match self.root(x)
+        {
+            Some(sr) => {
+                self.siz[self.root(x)]
+            }
+            None => {
+                None
+            }
+        }
     }
 }
