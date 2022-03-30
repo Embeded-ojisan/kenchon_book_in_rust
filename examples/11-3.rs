@@ -1,5 +1,7 @@
 use kenchon_book_in_rust::UnionFind::*;
 
+
+
 fn main()
 {
     let mut uf = UnionFind::new(7);
