@@ -1,4 +1,4 @@
-use crate::UnionFind::UniteError::AlreadySameGroup;
+use crate::UnionFind::UniteError::*;
 
 
 pub struct UnionFind
@@ -10,7 +10,8 @@ pub struct UnionFind
 pub enum UniteError
 {
     AlreadySameGroup,
-    
+    NoneGroup,
+
 }
 
 impl UnionFind
@@ -45,13 +46,37 @@ impl UnionFind
 
     pub fn unite(&mut self, x: usize, y: usize) -> Result<bool,UniteError>
     {
-        let x = self.root(x).unwrap_or(None);
-        let y = self.root(y).unwrap_or(None);
+        if self.root(x).is_none() == true 
+            || self.root(y).is_none() == true
+        {
+            return Err(NoneGroup);
+        }
+
+        let x = self.root(x).unwrap();
+        let y = self.root(y).unwrap();
 
         if x == y
         {
             return Err(AlreadySameGroup);
         }
+
+        /*
+        match x {
+            Some(xb) => {
+                match y {
+                    Some(yb) => {
+                        ;
+                    },
+                    None => {
+                        return Err(NoneGroup);
+                    }
+                }
+            },
+            None => {
+                return Err(NoneGroup);
+            }
+        }
+        */
 
         if self.siz[x] < self.siz[y]
         {
