@@ -52,35 +52,17 @@ impl UnionFind
             return Err(NoneGroup);
         }
 
-        let x = self.root(x).unwrap();
-        let y = self.root(y).unwrap();
+        let mut x = self.root(x).unwrap();
+        let mut y = self.root(y).unwrap();
 
         if x == y
         {
             return Err(AlreadySameGroup);
         }
 
-        /*
-        match x {
-            Some(xb) => {
-                match y {
-                    Some(yb) => {
-                        ;
-                    },
-                    None => {
-                        return Err(NoneGroup);
-                    }
-                }
-            },
-            None => {
-                return Err(NoneGroup);
-            }
-        }
-        */
-
         if self.siz[x] < self.siz[y]
         {
-            std::mem::replace(x, y);
+            std::mem::replace(&mut x, y);
         }
 
         self.par[y] = Some(x);
@@ -94,7 +76,7 @@ impl UnionFind
         match self.root(x)
         {
             Some(sr) => {
-                self.siz[self.root(x)]
+                Some(self.siz[sr])
             }
             None => {
                 None
