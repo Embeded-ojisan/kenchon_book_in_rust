@@ -11,7 +11,6 @@ fn main()
     println!("uf.issame(1,3) is {}", uf.issame(1,3));
     println!("uf.issame(2,5) is {}", uf.issame(2,5));
 
-
     uf.unite(1,6);
     println!("uf.issame(2,5) is {}", uf.issame(2,5));
 }
