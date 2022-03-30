@@ -10,6 +10,7 @@ pub struct UnionFind
 pub enum UniteError
 {
     AlreadySameGroup,
+    
 }
 
 impl UnionFind
