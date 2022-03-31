@@ -6,6 +6,8 @@ fn main()
 {
     let mut uf = UnionFind::new(7);
 
+    println!("1");
+
     uf.unite(1,2);
     uf.unite(2,3);
     uf.unite(5,6);

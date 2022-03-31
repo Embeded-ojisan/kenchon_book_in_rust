@@ -20,7 +20,8 @@ impl UnionFind
     {
         UnionFind
         {
-            par: vec![None; n],
+ //           par: vec![None; n],
+            par: (0..n-1).map(|x| Some(x)).collect(),
             siz: vec![1; n],
         }
     }
