@@ -20,15 +20,15 @@ impl UnionFind
     {
         UnionFind
         {
- //           par: vec![None; n],
-            par: (0..n-1).map(|x| Some(x)).collect(),
+            par: vec![None; n],
             siz: vec![1; n],
         }
     }
 
     pub fn root(&mut self, x: usize) -> Option<usize>
     {
-        if self.par[0] == None 
+
+        if self.par[x] == None 
         {
             return Some(x);
         }
@@ -37,6 +37,7 @@ impl UnionFind
             self.par[x] = self.root(self.par[x].unwrap());
             return self.par[x];
         }
+
     }
 
     pub fn issame(&mut self, x: usize, y: usize) -> bool
