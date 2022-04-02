@@ -1,4 +1,4 @@
-use kenchon_book_in_rust::UnionFind::*;
+use kenchon_book_in_rust::DataStructure::UnionFind::*;
 
 fn main()
 {

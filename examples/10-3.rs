@@ -1,5 +1,5 @@
-use kenchon_book_in_rust::stdio_wrapper::read_single_usize;
-use kenchon_book_in_rust::SimpleGraph::*;
+use kenchon_book_in_rust::utility::stdio_wrapper::read_single_usize;
+use kenchon_book_in_rust::DataStructure::SimpleGraph::*;
 
 fn main() {
 

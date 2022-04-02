@@ -1,16 +1,6 @@
-pub mod mylinkedlist;
-//pub mod customizedlinkedlist;
-pub mod samplelinkedlist;
-pub mod samplelinkedlist2;
-
-pub mod SimpleGraph;
-pub mod WeightedGraph;
-
-pub mod Heap;
-
-pub mod UnionFind;
-
-pub mod stdio_wrapper;
+pub mod sort;
+pub mod DataStructure;
+pub mod utility;
 
 #[cfg(test)]
 mod tests {
