@@ -24,5 +24,6 @@ pub fn InsertionSort(a: &mut Vec<usize>)
             }
         }
         a[j] = *v;
+        j -= 1;
     }
 }
