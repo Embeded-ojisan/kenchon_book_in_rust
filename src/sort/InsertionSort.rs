@@ -6,6 +6,7 @@ pub fn InsertionSort(a: &mut Vec<usize>)
     for val in a.iter_mut()
     {
         let mut j = i;
+
         loop
         {
             if j <= 0
