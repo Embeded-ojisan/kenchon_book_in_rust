@@ -2,9 +2,16 @@
 pub fn InsertionSort(a: &mut Vec<usize>)
 {
     let mut N = a.len();
-    let mut i = 0;
-    for val in a.iter_mut()
+    let mut i = 1;
+    loop
     {
+        if i >= N
+        {
+            break;
+        }
+
+        let val = a[i];
+
         let mut j = i;
 
         loop
@@ -14,7 +21,7 @@ pub fn InsertionSort(a: &mut Vec<usize>)
                 break;
             }
 
-            if a[j - 1] > *val
+            if a[j - 1] > val
             {
                 let aj = a[j - 1];
                 a[j] = aj;
@@ -23,12 +30,12 @@ pub fn InsertionSort(a: &mut Vec<usize>)
             {
                 break;
             }
+            j -= 1;
         }
 
         let v = val;
 
-        a[j] = *v;
-        j -= 1;
+        a[j] = v;
         i += 1;
     }
 }
