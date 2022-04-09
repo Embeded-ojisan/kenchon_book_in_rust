@@ -15,13 +15,13 @@ pub fn main()
         v.push(a);
     }
 
-/*
+
     let n = v.len();
     for i in &v
     {
         println!("The array is {}", i);
     }
-*/
+
 
     InsertionSort(&mut v);
 
