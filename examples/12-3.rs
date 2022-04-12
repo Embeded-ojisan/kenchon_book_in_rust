@@ -1,4 +1,4 @@
-use kenchon_book_in_rust::sort::QucikSort::*;
+use kenchon_book_in_rust::sort::QuickSort::*;
 use kenchon_book_in_rust::utility::stdio_wrapper::*;
 
 pub fn main()
@@ -9,8 +9,13 @@ pub fn main()
 
     for i in 0..N
     {
-        a[i] = read_single_usize();
+        a.push(read_single_usize());
     }
 
-    QuickSort(a, 0, N);
+    QuickSort(&mut a, 0, N);
+
+    for i in 0..N
+    {
+        println!("{}", a[i]);
+    }
 }
