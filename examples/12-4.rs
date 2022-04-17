@@ -1,4 +1,4 @@
-use kenchon_book_in_rust::sort::quick_sort::*;
+use kenchon_book_in_rust::sort::heap_sort::*;
 use kenchon_book_in_rust::utility::stdio_wrapper::*;
 
 pub fn main()
@@ -12,7 +12,7 @@ pub fn main()
         a.push(read_single_usize());
     }
 
-    QuickSort(&mut a, 0, N);
+    heap_sort(&mut a);
 
     for i in 0..N
     {

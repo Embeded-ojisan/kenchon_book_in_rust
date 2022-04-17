@@ -1,4 +1,4 @@
-use kenchon_book_in_rust::DataStructure::samplelinkedlist::Deque;
+use kenchon_book_in_rust::data_structure::samplelinkedlist::Deque;
 
 fn main() {
     let mut deq = Deque::new();

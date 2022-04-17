@@ -1,4 +1,4 @@
-use kenchon_book_in_rust::DataStructure::samplelinkedlist2::List;
+use kenchon_book_in_rust::data_structure::samplelinkedlist2::List;
 
 fn main() {
 

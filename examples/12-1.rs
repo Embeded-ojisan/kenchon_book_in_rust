@@ -1,4 +1,4 @@
-use kenchon_book_in_rust::sort::InsertionSort::*;
+use kenchon_book_in_rust::sort::insertion_sort::*;
 use kenchon_book_in_rust::utility::stdio_wrapper::*;
 
 pub fn main()

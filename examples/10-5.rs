@@ -1,4 +1,4 @@
-use kenchon_book_in_rust::DataStructure::Heap::Heap;
+use kenchon_book_in_rust::data_structure::heap::*;
 
 fn main() {
     let mut heap = Heap::new();

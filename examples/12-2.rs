@@ -1,4 +1,4 @@
-use kenchon_book_in_rust::sort::MergeSort::*;
+use kenchon_book_in_rust::sort::merge_sort::*;
 use kenchon_book_in_rust::utility::stdio_wrapper::*;
 
 pub fn main()

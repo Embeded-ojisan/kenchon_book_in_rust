@@ -1,5 +1,9 @@
 
-pub fn QuickSort(a: &mut Vec<usize>, left: usize, right: usize)
+pub fn QuickSort(
+    a: &mut Vec<usize>
+    ,left: usize
+    ,right: usize
+)
 {
     if right - left <= 1
     {
@@ -22,6 +26,7 @@ pub fn QuickSort(a: &mut Vec<usize>, left: usize, right: usize)
     {
         if a[j] < pivot
         {
+
             unsafe {
                 let p1: *mut usize = &mut a[i];
                 let p2: *mut usize = &mut a[j];

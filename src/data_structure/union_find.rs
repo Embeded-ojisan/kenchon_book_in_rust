@@ -1,4 +1,4 @@
-use crate::DataStructure::UnionFind::UniteError::*;
+use crate::data_structure::union_find::UniteError::*;
 
 
 pub struct UnionFind

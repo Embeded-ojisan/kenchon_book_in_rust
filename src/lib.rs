@@ -1,5 +1,5 @@
 pub mod sort;
-pub mod DataStructure;
+pub mod data_structure;
 pub mod utility;
 
 #[cfg(test)]

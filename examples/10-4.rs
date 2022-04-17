@@ -1,5 +1,5 @@
-use kenchon_book_in_rust::utility::stdio_wrapper::read_single_usize;
-use kenchon_book_in_rust::DataStructure::WeightedGraph::WeightedGraph;
+use kenchon_book_in_rust::utility::stdio_wrapper::*;
+use kenchon_book_in_rust::data_structure::weighted_graph::*;
 
 
 fn main() {
