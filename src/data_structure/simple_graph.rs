@@ -36,4 +36,8 @@ impl SimpleGraph {
             },
         }
     }
+
+    pub fn len(&self) -> usize {
+        self.list.len()
+    }
 }
