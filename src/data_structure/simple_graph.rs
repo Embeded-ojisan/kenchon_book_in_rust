@@ -41,3 +41,12 @@ impl SimpleGraph {
         self.list.len()
     }
 }
+
+impl Iterator for SimpleGraph {
+    type Item = usize;
+
+    fn next(&mut self) -> Option<Self::Item>
+    {
+        let temp = self.list
+    }
+}
