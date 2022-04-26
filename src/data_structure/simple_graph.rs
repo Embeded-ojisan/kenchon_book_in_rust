@@ -4,6 +4,8 @@
 https://blog-dry.com/entry/2020/01/30/004406
 */
 
+use std::ops::Deref;
+
 pub struct SimpleGraph {
     list: Vec<Vec<usize>>,
 }
@@ -43,10 +45,13 @@ impl SimpleGraph {
 }
 
 impl Iterator for SimpleGraph {
-    type Item = usize;
+    type Item = Vec<usize>;
 
     fn next(&mut self) -> Option<Self::Item>
     {
-        let temp = self.list
+        Some(
+            (self.list.iter().next().unwrap().deref()).to_vec()
+        )
+//        temp.next()
     }
 }

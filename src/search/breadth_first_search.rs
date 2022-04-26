@@ -24,7 +24,9 @@ pub fn breadth_first_search(
 
         let mut v = todo.pop_front();
 
-        for x in G
+        let mut iter = (*G).into_iter();
+
+        for x in iter
         {
             if seen[x] == true
             {
