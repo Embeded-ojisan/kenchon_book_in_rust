@@ -23,7 +23,8 @@ pub fn breadth_first_search(
         }
 
         let mut v = todo.pop_front();
-        let mut iter = (*G).into_iter();
+//        let mut iter = (*G).into_iter();
+        let iter = (*G).get_not_mut(v.unwrap());
 
         for x in iter
         {

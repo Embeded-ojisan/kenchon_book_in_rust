@@ -39,19 +39,32 @@ impl SimpleGraph {
         }
     }
 
+    pub fn get_not_mut(& self, a: usize) -> Vec<usize> {
+        match self.list.get(a){
+            Some(vb) => {
+                vb.to_vec()
+            },
+            None => {
+                vec![]
+            },
+        }
+    }
+
     pub fn len(&self) -> usize {
         self.list.len()
     }
 }
 
+/*
 impl Iterator for SimpleGraph {
     type Item = Vec<usize>;
 
-    fn next(&mut self) -> Option<Self::Item>
+    fn next(&mut self, v: usize) -> Option<Self::Item>
     {
         Some(
-            (self.list.iter().next().unwrap().deref()).to_vec()
+            (self.list[v].iter().next().unwrap().deref()).to_vec()
         )
 //        temp.next()
     }
 }
+*/
