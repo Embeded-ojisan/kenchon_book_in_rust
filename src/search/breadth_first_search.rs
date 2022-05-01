@@ -3,13 +3,13 @@ use std::collections::VecDeque;
 use crate::data_structure::simple_graph::SimpleGraph;
 
 pub fn breadth_first_search(
-    G: &SimpleGraph,
-    s: usize
+    G: &SimpleGraph
+    ,s: usize
+    ,seen: &mut Vec<bool>
 )
 {
     let N = G.len();
 
-    let mut seen = vec![false; N];
     let mut todo = VecDeque::new();
 
     seen[s] = true;
